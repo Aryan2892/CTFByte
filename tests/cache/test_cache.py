@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from CTFd.cache import clear_all_user_sessions, clear_user_session
-from CTFd.models import Users
-from CTFd.utils.security.auth import login_user
-from CTFd.utils.user import get_current_user, is_admin
+from CTFByte.cache import clear_all_user_sessions, clear_user_session
+from CTFByte.models import Users
+from CTFByte.utils.security.auth import login_user
+from CTFByte.utils.user import get_current_user, is_admin
 from tests.helpers import create_ctfd, destroy_ctfd, register_user
 
 

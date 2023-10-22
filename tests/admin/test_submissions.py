@@ -1,4 +1,4 @@
-from CTFd.models import Users
+from CTFByte.models import Users
 from tests.helpers import (
     create_ctfd,
     destroy_ctfd,

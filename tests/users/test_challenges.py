@@ -3,8 +3,8 @@
 
 from freezegun import freeze_time
 
-from CTFd.models import Challenges, Fails, Solves
-from CTFd.utils import set_config, text_type
+from CTFByte.models import Challenges, Fails, Solves
+from CTFByte.utils import set_config, text_type
 from tests.helpers import (
     create_ctfd,
     destroy_ctfd,
@@ -518,7 +518,7 @@ def test_challenges_cannot_be_solved_while_paused():
         resp = r.get_json()["data"]
         assert r.status_code == 403
         assert resp["status"] == "paused"
-        assert resp["message"] == "CTFd is paused"
+        assert resp["message"] == "CTFByte is paused"
 
         # There are no solves saved
         solves = Solves.query.count()

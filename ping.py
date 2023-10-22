@@ -7,7 +7,7 @@ import time
 from sqlalchemy import create_engine
 from sqlalchemy.engine.url import make_url
 
-from CTFd.config import Config
+from CTFByte.config import Config
 
 url = make_url(Config.DATABASE_URL)
 
@@ -16,7 +16,7 @@ if url.drivername.startswith("sqlite"):
     exit(0)
 
 # Null out the database so raw_connection doesnt error if it doesnt exist
-# CTFd will create the database if it doesnt exist
+# CTFByte will create the database if it doesnt exist
 url.database = None
 
 # Wait for the database server to be available

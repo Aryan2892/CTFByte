@@ -6,10 +6,10 @@ import os
 from flask import url_for
 from freezegun import freeze_time
 
-from CTFd.cache import clear_pages
-from CTFd.utils import set_config
-from CTFd.utils.config.pages import get_pages
-from CTFd.utils.encoding import hexencode
+from CTFByte.cache import clear_pages
+from CTFByte.utils import set_config
+from CTFByte.utils.config.pages import get_pages
+from CTFByte.utils.encoding import hexencode
 from tests.helpers import (
     create_ctfd,
     destroy_ctfd,
@@ -181,7 +181,7 @@ def test_user_get_profile():
 def test_user_can_access_files():
     app = create_ctfd()
     with app.app_context():
-        from CTFd.utils.uploads import rmdir
+        from CTFByte.utils.uploads import rmdir
 
         chal = gen_challenge(app.db)
         chal_id = chal.id
@@ -276,7 +276,7 @@ def test_user_can_access_files():
 def test_user_can_access_files_with_auth_token():
     app = create_ctfd()
     with app.app_context():
-        from CTFd.utils.uploads import rmdir
+        from CTFByte.utils.uploads import rmdir
 
         chal = gen_challenge(app.db)
         chal_id = chal.id
@@ -404,7 +404,7 @@ def test_user_can_access_files_with_auth_token():
 def test_user_can_access_files_if_view_after_ctf():
     app = create_ctfd()
     with app.app_context():
-        from CTFd.utils.uploads import rmdir
+        from CTFByte.utils.uploads import rmdir
 
         chal = gen_challenge(app.db)
         chal_id = chal.id

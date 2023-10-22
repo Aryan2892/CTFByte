@@ -1,6 +1,6 @@
 import random
 
-from CTFd.models import (
+from CTFByte.models import (
     Awards,
     Challenges,
     Fails,

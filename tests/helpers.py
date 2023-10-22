@@ -14,10 +14,10 @@ from sqlalchemy.engine.url import make_url
 from sqlalchemy_utils import drop_database
 from werkzeug.datastructures import Headers
 
-from CTFd import create_app
-from CTFd.cache import cache, clear_challenges, clear_standings
-from CTFd.config import TestingConfig
-from CTFd.models import (
+from CTFByte import create_app
+from CTFByte.cache import cache, clear_challenges, clear_standings
+from CTFByte.config import TestingConfig
+from CTFByte.models import (
     Awards,
     ChallengeComments,
     ChallengeFiles,
@@ -44,7 +44,7 @@ from CTFd.models import (
     UserComments,
     Users,
 )
-from CTFd.utils import set_config
+from CTFByte.utils import set_config
 from tests.constants.time import FreezeTimes
 
 text_type = str
@@ -71,7 +71,7 @@ class ctftime:
     @contextmanager
     def init():
         """
-        This context manager can be used to setup start and end dates for a test CTFd
+        This context manager can be used to setup start and end dates for a test CTFByte
         """
         try:
             set_config("start", FreezeTimes.START)
@@ -84,7 +84,7 @@ class ctftime:
     @contextmanager
     def not_started():
         """
-        This context manager sets the current time to before the start date of the test CTFd
+        This context manager sets the current time to before the start date of the test CTFByte
         """
         try:
             freezer = freeze_time(FreezeTimes.NOT_STARTED)
@@ -96,7 +96,7 @@ class ctftime:
     @contextmanager
     def started():
         """
-        This context manager sets the current time to the start date of the test CTFd
+        This context manager sets the current time to the start date of the test CTFByte
         """
         try:
             freezer = freeze_time(FreezeTimes.STARTED)
@@ -108,7 +108,7 @@ class ctftime:
     @contextmanager
     def ended():
         """
-        This context manager sets the current time to after the end date of the test CTFd
+        This context manager sets the current time to after the end date of the test CTFByte
         """
         try:
             freezer = freeze_time(FreezeTimes.ENDED)
@@ -119,7 +119,7 @@ class ctftime:
 
 
 def create_ctfd(
-    ctf_name="CTFd",
+    ctf_name="CTFByte",
     ctf_description="CTF description",
     name="admin",
     email="admin@examplectf.com",
@@ -159,7 +159,7 @@ def create_ctfd(
 
 def setup_ctfd(
     app,
-    ctf_name="CTFd",
+    ctf_name="CTFByte",
     ctf_description="CTF description",
     name="admin",
     email="admin@examplectf.com",

@@ -1,4 +1,4 @@
-from CTFd.utils.humanize.numbers import ordinalize
+from CTFByte.utils.humanize.numbers import ordinalize
 
 
 def test_ordinalize():

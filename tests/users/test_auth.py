@@ -5,10 +5,10 @@ from unittest.mock import patch
 
 from freezegun import freeze_time
 
-from CTFd.models import Users, db
-from CTFd.utils import get_config, set_config
-from CTFd.utils.crypto import verify_password
-from CTFd.utils.security.signing import serialize
+from CTFByte.models import Users, db
+from CTFByte.utils import get_config, set_config
+from CTFByte.utils.crypto import verify_password
+from CTFByte.utils.security.signing import serialize
 from tests.helpers import create_ctfd, destroy_ctfd, login_as_user, register_user
 
 
@@ -286,7 +286,7 @@ def test_user_can_confirm_email(mock_smtp):
     """Test that a user is capable of confirming their email address"""
     app = create_ctfd()
     with app.app_context(), freeze_time("2012-01-14 03:21:34"):
-        # Set CTFd to only allow confirmed users and send emails
+        # Set CTFByte to only allow confirmed users and send emails
         set_config("verify_emails", True)
         set_config("mail_server", "localhost")
         set_config("mail_port", 25)
@@ -337,7 +337,7 @@ def test_user_can_reset_password(mock_smtp):
 
     app = create_ctfd()
     with app.app_context(), freeze_time("2012-01-14 03:21:34"):
-        # Set CTFd to send emails
+        # Set CTFByte to send emails
         set_config("mail_server", "localhost")
         set_config("mail_port", 25)
         set_config("mail_useauth", True)
@@ -365,7 +365,7 @@ def test_user_can_reset_password(mock_smtp):
 
             # Build the email
             msg = (
-                "Did you initiate a password reset on CTFd? If you didn't initiate this request you can ignore this email. "
+                "Did you initiate a password reset on CTFByte? If you didn't initiate this request you can ignore this email. "
                 "\n\nClick the following link to reset your password:\n"
                 "http://localhost/reset_password/InVzZXJAdXNlci5jb20i.TxD0vg.28dY_Gzqb1TH9nrcE_H7W8YFM-U\n\n"
                 "If the link is not clickable, try copying and pasting it into your browser."

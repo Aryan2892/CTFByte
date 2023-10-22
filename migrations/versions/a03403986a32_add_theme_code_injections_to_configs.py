@@ -8,7 +8,7 @@ Create Date: 2020-02-13 01:10:16.430424
 from alembic import op  # noqa: I001
 from sqlalchemy.sql import column, table
 
-from CTFd.models import db
+from CTFByte.models import db
 
 
 # revision identifiers, used by Alembic.

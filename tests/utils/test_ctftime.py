@@ -1,6 +1,6 @@
-from CTFd.models import Solves
-from CTFd.utils.dates import ctf_ended, ctf_started
-from CTFd.utils.modes import TEAMS_MODE
+from CTFByte.models import Solves
+from CTFByte.utils.dates import ctf_ended, ctf_started
+from CTFByte.utils.modes import TEAMS_MODE
 from tests.helpers import (
     create_ctfd,
     ctftime,

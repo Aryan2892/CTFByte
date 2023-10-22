@@ -1,6 +1,6 @@
 FROM python:3.9-slim-buster as build
 
-WORKDIR /opt/CTFd
+WORKDIR /opt/CTFByte
 
 # hadolint ignore=DL3008
 RUN apt-get update \
@@ -15,10 +15,10 @@ RUN apt-get update \
 
 ENV PATH="/opt/venv/bin:$PATH"
 
-COPY . /opt/CTFd
+COPY . /opt/CTFByte
 
 RUN pip install --no-cache-dir -r requirements.txt \
-    && for d in CTFd/plugins/*; do \
+    && for d in CTFByte/plugins/*; do \
         if [ -f "$d/requirements.txt" ]; then \
             pip install --no-cache-dir -r "$d/requirements.txt";\
         fi; \
@@ -26,7 +26,7 @@ RUN pip install --no-cache-dir -r requirements.txt \
 
 
 FROM python:3.9-slim-buster as release
-WORKDIR /opt/CTFd
+WORKDIR /opt/CTFByte
 
 # hadolint ignore=DL3008
 RUN apt-get update \
@@ -36,20 +36,20 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-COPY --chown=1001:1001 . /opt/CTFd
+COPY --chown=1001:1001 . /opt/CTFByte
 
 RUN useradd \
     --no-log-init \
     --shell /bin/bash \
     -u 1001 \
     ctfd \
-    && mkdir -p /var/log/CTFd /var/uploads \
-    && chown -R 1001:1001 /var/log/CTFd /var/uploads /opt/CTFd \
-    && chmod +x /opt/CTFd/docker-entrypoint.sh
+    && mkdir -p /var/log/CTFByte /var/uploads \
+    && chown -R 1001:1001 /var/log/CTFByte /var/uploads /opt/CTFByte \
+    && chmod +x /opt/CTFByte/docker-entrypoint.sh
 
 COPY --chown=1001:1001 --from=build /opt/venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
 USER 1001
 EXPOSE 8000
-ENTRYPOINT ["/opt/CTFd/docker-entrypoint.sh"]
+ENTRYPOINT ["/opt/CTFByte/docker-entrypoint.sh"]

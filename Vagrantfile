@@ -42,8 +42,8 @@ export DATABASE_URL="mysql+pymysql://ctfduser:ctfd@localhost/ctfd"
 cd /vagrant
 python manage.py db upgrade
 
-echo "Starting CTFd"
-tmux new-session -d -n "ctfd" -c "/vagrant" -s "ctfd" "gunicorn --bind 0.0.0.0:8000 -w 4 'CTFd:create_app()'"
+echo "Starting CTFByte"
+tmux new-session -d -n "ctfd" -c "/vagrant" -s "ctfd" "gunicorn --bind 0.0.0.0:8000 -w 4 'CTFByte:create_app()'"
 SCRIPT
 
 Vagrant.configure("2") do |config|

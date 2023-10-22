@@ -6,9 +6,9 @@ import hashlib
 import random
 import argparse
 
-from CTFd import create_app
-from CTFd.cache import clear_challenges, clear_config, clear_standings, clear_pages
-from CTFd.models import (
+from CTFByte import create_app
+from CTFByte.cache import clear_challenges, clear_config, clear_standings, clear_pages
+from CTFByte.models import (
     Users,
     Teams,
     Challenges,

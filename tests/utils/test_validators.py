@@ -1,6 +1,6 @@
 from marshmallow import ValidationError
 
-from CTFd.utils.validators import validate_country_code, validate_email
+from CTFByte.utils.validators import validate_country_code, validate_email
 
 
 def test_validate_country_code():

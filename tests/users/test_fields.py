@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from CTFd.models import UserFieldEntries
+from CTFByte.models import UserFieldEntries
 from tests.helpers import (
     create_ctfd,
     destroy_ctfd,

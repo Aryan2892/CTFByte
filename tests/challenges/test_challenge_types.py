@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from CTFd.models import Challenges
+from CTFByte.models import Challenges
 from tests.helpers import create_ctfd, destroy_ctfd, login_as_user, register_user
 
 
@@ -31,7 +31,7 @@ def test_missing_challenge_type():
         assert chal_count == 1
 
         # Delete the dynamic challenge type
-        from CTFd.plugins.challenges import CHALLENGE_CLASSES
+        from CTFByte.plugins.challenges import CHALLENGE_CLASSES
 
         del CHALLENGE_CLASSES["dynamic"]
 

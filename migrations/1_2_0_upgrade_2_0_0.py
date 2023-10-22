@@ -6,10 +6,10 @@ import sys
 import dataset
 from sqlalchemy_utils import drop_database
 
-from CTFd import config, create_app
-from CTFd.utils import string_types
+from CTFByte import config, create_app
+from CTFByte.utils import string_types
 
-# This is important to allow access to the CTFd application factory
+# This is important to allow access to the CTFByte application factory
 sys.path.append(os.getcwd())
 
 
@@ -29,11 +29,11 @@ if __name__ == "__main__":
     print("/*\\ Migrating your database to 2.0.0 can potentially lose data./*\\")
     print(
         """/*\\ Please be sure to back up all data by:
-        * creating a CTFd export
+        * creating a CTFByte export
         * creating a dump of your actual database
-        * and backing up the CTFd source code directory"""
+        * and backing up the CTFByte source code directory"""
     )
-    print("/*\\ CTFd maintainers are not responsible for any data loss! /*\\")
+    print("/*\\ CTFByte maintainers are not responsible for any data loss! /*\\")
     if input("Run database migrations (Y/N)").lower().strip() == "y":
         pass
     else:

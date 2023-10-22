@@ -1,24 +1,24 @@
 lint:
-	ruff check --select E,F,W,B,C4,I --ignore E402,E501,E712,B904,B905 --exclude=CTFd/uploads CTFd/ migrations/ tests/
+	ruff check --select E,F,W,B,C4,I --ignore E402,E501,E712,B904,B905 --exclude=CTFByte/uploads CTFByte/ migrations/ tests/
 	yarn lint
-	black --check --diff --exclude=CTFd/uploads --exclude=node_modules .
-	prettier --check 'CTFd/themes/**/assets/**/*'
+	black --check --diff --exclude=CTFByte/uploads --exclude=node_modules .
+	prettier --check 'CTFByte/themes/**/assets/**/*'
 	prettier --check '**/*.md'
 
 format:
-	isort --skip=CTFd/uploads -rc CTFd/ tests/
-	black --exclude=CTFd/uploads --exclude=node_modules .
-	prettier --write 'CTFd/themes/**/assets/**/*'
+	isort --skip=CTFByte/uploads -rc CTFByte/ tests/
+	black --exclude=CTFByte/uploads --exclude=node_modules .
+	prettier --write 'CTFByte/themes/**/assets/**/*'
 	prettier --write '**/*.md'
 
 test:
-	pytest -rf --cov=CTFd --cov-context=test --cov-report=xml \
+	pytest -rf --cov=CTFByte --cov-context=test --cov-report=xml \
 		--ignore-glob="**/node_modules/" \
 		--ignore=node_modules/ \
 		-W ignore::sqlalchemy.exc.SADeprecationWarning \
 		-W ignore::sqlalchemy.exc.SAWarning \
 		-n auto
-	bandit -r CTFd -x CTFd/uploads --skip B105,B322
+	bandit -r CTFByte -x CTFByte/uploads --skip B105,B322
 	pipdeptree
 	yarn verify
 

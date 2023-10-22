@@ -2,8 +2,8 @@ from unittest.mock import Mock, patch
 
 import requests
 
-from CTFd.utils import get_config, set_config
-from CTFd.utils.updates import update_check
+from CTFByte.utils import get_config, set_config
+from CTFByte.utils.updates import update_check
 from tests.helpers import create_ctfd, destroy_ctfd, login_as_user
 
 
@@ -24,8 +24,8 @@ def test_update_check_identifies_update(fake_get_request):
         fake_get_request.return_value = fake_response
         fake_response.json = lambda: {
             "resource": {
-                "download_url": "https://api.github.com/repos/CTFd/CTFd/zipball/9.9.9",
-                "html_url": "https://github.com/CTFd/CTFd/releases/tag/9.9.9",
+                "download_url": "https://api.github.com/repos/CTFByte/CTFByte/zipball/9.9.9",
+                "html_url": "https://github.com/CTFByte/CTFByte/releases/tag/9.9.9",
                 "id": 12,
                 "latest": True,
                 "next": 1542212248,
@@ -37,7 +37,7 @@ def test_update_check_identifies_update(fake_get_request):
         update_check()
         assert (
             get_config("version_latest")
-            == "https://github.com/CTFd/CTFd/releases/tag/9.9.9"
+            == "https://github.com/CTFByte/CTFByte/releases/tag/9.9.9"
         )
         assert get_config("next_update_check") == 1542212248
     destroy_ctfd(app)
@@ -48,14 +48,14 @@ def test_update_check_notifies_user():
     app = create_ctfd()
     with app.app_context():
         app.config["UPDATE_CHECK"] = True
-        set_config("version_latest", "https://github.com/CTFd/CTFd/releases/tag/9.9.9")
+        set_config("version_latest", "https://github.com/CTFByte/CTFByte/releases/tag/9.9.9")
         client = login_as_user(app, name="admin", password="password")
 
         r = client.get("/admin/config")
         assert r.status_code == 200
 
         response = r.get_data(as_text=True)
-        assert "https://github.com/CTFd/CTFd/releases/tag/9.9.9" in response
+        assert "https://github.com/CTFByte/CTFByte/releases/tag/9.9.9" in response
 
     destroy_ctfd(app)
 
@@ -70,8 +70,8 @@ def test_update_check_ignores_downgrades(fake_post_request):
         fake_post_request.return_value = fake_response
         fake_response.json = lambda: {
             u"resource": {
-                u"html_url": u"https://github.com/CTFd/CTFd/releases/tag/0.0.1",
-                u"download_url": u"https://api.github.com/repos/CTFd/CTFd/zipball/0.0.1",
+                u"html_url": u"https://github.com/CTFByte/CTFByte/releases/tag/0.0.1",
+                u"download_url": u"https://api.github.com/repos/CTFByte/CTFByte/zipball/0.0.1",
                 u"published_at": u"Wed, 25 Oct 2017 19:39:42 -0000",
                 u"tag": u"0.0.1",
                 u"prerelease": False,
@@ -86,10 +86,10 @@ def test_update_check_ignores_downgrades(fake_post_request):
         fake_post_request.return_value = fake_response
         fake_response.json = lambda: {
             u"resource": {
-                u"html_url": u"https://github.com/CTFd/CTFd/releases/tag/{}".format(
+                u"html_url": u"https://github.com/CTFByte/CTFByte/releases/tag/{}".format(
                     app.VERSION
                 ),
-                u"download_url": u"https://api.github.com/repos/CTFd/CTFd/zipball/{}".format(
+                u"download_url": u"https://api.github.com/repos/CTFByte/CTFByte/zipball/{}".format(
                     app.VERSION
                 ),
                 u"published_at": u"Wed, 25 Oct 2017 19:39:42 -0000",

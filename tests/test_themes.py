@@ -10,8 +10,8 @@ from jinja2.exceptions import TemplateNotFound
 from jinja2.sandbox import SecurityError
 from werkzeug.test import Client
 
-from CTFd.config import TestingConfig
-from CTFd.utils import get_config, set_config
+from CTFByte.config import TestingConfig
+from CTFByte.utils import get_config, set_config
 from tests.helpers import create_ctfd, destroy_ctfd, gen_user, login_as_user
 
 
@@ -80,7 +80,7 @@ def test_theme_header():
 
 
 def test_that_ctfd_can_be_deployed_in_subdir():
-    """Test that CTFd can be deployed in a subdirectory"""
+    """Test that CTFByte can be deployed in a subdirectory"""
     # This test is quite complicated. I do not suggest modifying it haphazardly.
     # Flask is automatically inserting the APPLICATION_ROOT into the
     # test urls which means when we hit /setup we hit /ctf/setup.
@@ -95,7 +95,7 @@ def test_that_ctfd_can_be_deployed_in_subdir():
             r = client.get("/setup")
             with client.session_transaction() as sess:
                 data = {
-                    "ctf_name": "CTFd",
+                    "ctf_name": "CTFByte",
                     "ctf_description": "CTF description",
                     "name": "admin",
                     "email": "admin@examplectf.com",

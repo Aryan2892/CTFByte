@@ -3,8 +3,8 @@
 
 from flask_caching import make_template_fragment_key
 
-from CTFd.cache import clear_standings
-from CTFd.models import Users
+from CTFByte.cache import clear_standings
+from CTFByte.models import Users
 from tests.helpers import (
     create_ctfd,
     destroy_ctfd,

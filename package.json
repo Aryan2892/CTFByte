@@ -1,7 +1,7 @@
 {
   "name": "ctfd",
   "version": "3.5.2",
-  "description": "CTFd is a Capture The Flag framework focusing on ease of use and customizability. It comes with everything you need to run a CTF and it's easy to customize with plugins and themes.",
+  "description": "CTFByte is a Capture The Flag framework focusing on ease of use and customizability. It comes with everything you need to run a CTF and it's easy to customize with plugins and themes.",
   "main": "index.js",
   "directories": {
     "test": "tests"
@@ -10,19 +10,19 @@
     "dev": "webpack-cli -w --mode=development",
     "build": "webpack-cli --mode=development; webpack-cli --mode=production",
     "verify": "webpack-cli --mode=development --display=errors-only; webpack-cli --mode=production --display=errors-only; git diff --quiet --exit-code",
-    "clean": "rm -rf CTFd/themes/core/static/css/* CTFd/themes/core/static/js/* CTFd/themes/admin/static/css/* CTFd/themes/admin/static/js/*",
-    "lint": "eslint CTFd/themes/core/assets/ CTFd/themes/admin/assets/"
+    "clean": "rm -rf CTFByte/themes/core/static/css/* CTFByte/themes/core/static/js/* CTFByte/themes/admin/static/css/* CTFByte/themes/admin/static/js/*",
+    "lint": "eslint CTFByte/themes/core/assets/ CTFByte/themes/admin/assets/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CTFd/CTFd.git"
+    "url": "git+https://github.com/CTFByte/CTFByte.git"
   },
   "author": "Kevin Chung <kchung@ctfd.io>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/CTFd/CTFd/issues"
+    "url": "https://github.com/CTFByte/CTFByte/issues"
   },
-  "homepage": "https://github.com/CTFd/CTFd#readme",
+  "homepage": "https://github.com/CTFByte/CTFByte#readme",
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",

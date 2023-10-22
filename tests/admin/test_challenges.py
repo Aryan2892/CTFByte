@@ -1,5 +1,5 @@
-from CTFd.models import Challenges
-from CTFd.utils import set_config
+from CTFByte.models import Challenges
+from CTFByte.utils import set_config
 from tests.helpers import (
     create_ctfd,
     destroy_ctfd,

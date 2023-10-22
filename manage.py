@@ -5,13 +5,13 @@ from pathlib import Path
 from flask_migrate import MigrateCommand
 from flask_script import Manager
 
-from CTFd import create_app
-from CTFd.utils import get_config as get_config_util
-from CTFd.utils import set_config as set_config_util
-from CTFd.utils.config import ctf_name
-from CTFd.utils.exports import export_ctf as export_ctf_util
-from CTFd.utils.exports import import_ctf as import_ctf_util
-from CTFd.utils.exports import (
+from CTFByte import create_app
+from CTFByte.utils import get_config as get_config_util
+from CTFByte.utils import set_config as set_config_util
+from CTFByte.utils.config import ctf_name
+from CTFByte.utils.exports import export_ctf as export_ctf_util
+from CTFByte.utils.exports import import_ctf as import_ctf_util
+from CTFByte.utils.exports import (
     set_import_end_time,
     set_import_error,
 )
@@ -23,7 +23,7 @@ manager.add_command("db", MigrateCommand)
 
 
 def jsenums():
-    from CTFd.constants import JS_ENUMS
+    from CTFByte.constants import JS_ENUMS
     import json
     import os
 
@@ -81,7 +81,7 @@ def import_ctf(path, delete_import_on_finish=False):
         try:
             import_ctf_util(path)
         except Exception as e:
-            from CTFd.utils.dates import unix_time
+            from CTFByte.utils.dates import unix_time
 
             set_import_error(f"Import Failure: " + str(e))
             set_import_end_time(value=unix_time(datetime.datetime.utcnow()))

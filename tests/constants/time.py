@@ -1,4 +1,4 @@
-from CTFd.constants import RawEnum
+from CTFByte.constants import RawEnum
 
 
 class FreezeTimes(str, RawEnum):

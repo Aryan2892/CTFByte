@@ -1,7 +1,7 @@
 import io
 
-from CTFd.models import Challenges, Teams, Users
-from CTFd.utils.crypto import verify_password
+from CTFByte.models import Challenges, Teams, Users
+from CTFByte.utils.crypto import verify_password
 from tests.helpers import create_ctfd, destroy_ctfd, gen_challenge, login_as_user
 
 

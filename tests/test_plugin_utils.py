@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from CTFd.plugins import (
+from CTFByte.plugins import (
     bypass_csrf_protection,
     get_admin_plugin_menu_bar,
     get_user_page_menu_bar,
@@ -219,7 +219,7 @@ def test_challenges_model_access_plugin_class():
     app = create_ctfd()
 
     with app.app_context():
-        from CTFd.plugins.challenges import get_chal_class
+        from CTFByte.plugins.challenges import get_chal_class
 
         chal = gen_challenge(app.db)
         assert chal.plugin_class == get_chal_class("standard")

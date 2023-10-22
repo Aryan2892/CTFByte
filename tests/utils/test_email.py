@@ -4,8 +4,8 @@ from unittest.mock import Mock, patch
 import requests
 from freezegun import freeze_time
 
-from CTFd.utils import get_config, set_config
-from CTFd.utils.email import (
+from CTFByte.utils import get_config, set_config
+from CTFByte.utils.email import (
     sendmail,
     successful_registration_notification,
     verify_email_address,
@@ -109,8 +109,8 @@ def test_sendmail_with_mailgun_from_config_file(fake_post_request):
         assert kwargs["data"] == {
             "to": ["user@user.com"],
             "text": "this is a test",
-            "from": "CTFd <noreply@examplectf.com>",
-            "subject": "Message from CTFd",
+            "from": "CTFByte <noreply@examplectf.com>",
+            "subject": "Message from CTFByte",
         }
 
         assert fake_response.status_code == 200
@@ -149,8 +149,8 @@ def test_sendmail_with_mailgun_from_db_config(fake_post_request):
         assert kwargs["data"] == {
             "to": ["user@user.com"],
             "text": "this is a test",
-            "from": "CTFd <noreply@examplectf.com>",
-            "subject": "Message from CTFd",
+            "from": "CTFByte <noreply@examplectf.com>",
+            "subject": "Message from CTFByte",
         }
 
         assert fake_response.status_code == 200
@@ -182,7 +182,7 @@ def test_verify_email(mock_smtp):
 
         # This is currently not actually validated
         msg = (
-            "Welcome to CTFd!\n\n"
+            "Welcome to CTFByte!\n\n"
             "Click the following link to confirm and activate your account:\n"
             "http://localhost/confirm/InVzZXJAdXNlci5jb20i.TxD0vg.28dY_Gzqb1TH9nrcE_H7W8YFM-U\n\n"
             "If the link is not clickable, try copying and pasting it into your browser."
@@ -224,7 +224,7 @@ def test_successful_registration_email(mock_smtp):
 
         successful_registration_notification(to_addr)
 
-        msg = "You've successfully registered for CTFd!"
+        msg = "You've successfully registered for CTFByte!"
 
         email_msg = EmailMessage()
         email_msg.set_content(msg)

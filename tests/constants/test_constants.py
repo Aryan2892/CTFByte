@@ -1,4 +1,4 @@
-from CTFd.constants import JinjaEnum, JSEnum, RawEnum
+from CTFByte.constants import JinjaEnum, JSEnum, RawEnum
 from tests.helpers import create_ctfd, destroy_ctfd
 
 
@@ -24,7 +24,7 @@ def test_RawEnum():
 
 
 def test_JSEnum():
-    from CTFd.constants import JS_ENUMS  # noqa: I001
+    from CTFByte.constants import JS_ENUMS  # noqa: I001
     import json
 
     @JSEnum

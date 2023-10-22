@@ -1,4 +1,4 @@
-from CTFd.utils import markdown
+from CTFByte.utils import markdown
 
 
 def test_markdown():

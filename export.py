@@ -1,6 +1,6 @@
-from CTFd import create_app
-from CTFd.utils import config
-from CTFd.utils.exports import export_ctf
+from CTFByte import create_app
+from CTFByte.utils import config
+from CTFByte.utils.exports import export_ctf
 
 import datetime
 import sys
@@ -10,7 +10,7 @@ import shutil
 app = create_app()
 with app.app_context():
     print(
-        "This file will be deleted in CTFd v4.0. Switch to using `python manage.py export_ctf`"
+        "This file will be deleted in CTFByte v4.0. Switch to using `python manage.py export_ctf`"
     )
     backup = export_ctf()
 

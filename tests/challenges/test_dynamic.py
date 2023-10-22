@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from CTFd.models import Challenges
-from CTFd.plugins.dynamic_challenges import DynamicChallenge, DynamicValueChallenge
-from CTFd.utils.security.signing import hmac
+from CTFByte.models import Challenges
+from CTFByte.plugins.dynamic_challenges import DynamicChallenge, DynamicValueChallenge
+from CTFByte.utils.security.signing import hmac
 from tests.helpers import (
     FakeRequest,
     create_ctfd,
